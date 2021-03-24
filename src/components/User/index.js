@@ -1,29 +1,42 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import style from "./style.module.css";
 import { BsChevronRight } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 function User() {
+  const { user } = useContext(UserContext);
+  console.log(user);
   return (
-    <div className="user">
-      <div className="user-avatar">
-        <img
-          src="https://randomuser.me/api/portraits/thumb/men/75.jpg"
-          alt=""
-        />
-      </div>
-      <div className="user-name">Umut, 34</div>
-      <div className="user-detail-icon">
-        <IconContext.Provider
-          value={{
-            size: "40px"
-          }}
-        >
-          <div>
-            <BsChevronRight />
+    <ul>
+      {user.length === 0 ? (
+        <li>Loading...</li>
+      ) : (
+        <li>
+          <div className={style.userAvatar}>
+            <img src={user.picture.thumbnail} alt="" />
           </div>
-        </IconContext.Provider>
-      </div>
-    </div>
+          <div className={style.userName}>
+            {user.name.first},{user.dob.age}
+          </div>
+          <div>
+            <Link to="/user-detail">
+              <IconContext.Provider
+                value={{
+                  size: "20px",
+                  color: "#97a2ac"
+                }}
+              >
+                <div>
+                  <BsChevronRight />
+                </div>
+              </IconContext.Provider>
+            </Link>
+          </div>
+        </li>
+      )}
+    </ul>
   );
 }
 

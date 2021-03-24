@@ -1,0 +1,26 @@
+ul {
+  width: 100%;
+  margin: 58px 0 0;
+}
+ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userAvatar img {
+  border-radius: 50%;
+}
+.userName {
+  font-size: 18px;
+  color: #6374f3;
+}
+.userDetailBtn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #dbe0e5;
+}
+.userDetailBtn:hover {
+  cursor: pointer;
+}

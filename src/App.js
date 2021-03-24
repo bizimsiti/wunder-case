@@ -1,30 +1,18 @@
 import "./App.css";
-import io from "socket.io-client";
+import { UserProvider } from "./contexts/UserContext";
+
 import Card from "./components/Card";
 import UserDetail from "./components/UserDetail";
 import { Route, Switch } from "react-router-dom";
-/* const socket = io("wss://wunder-provider.herokuapp.com", {
-  transports: ["websocket"]
-});
-socket.on("connect", () => {
-  console.log("connected");
-});
-socket.on("userList", (data) => {
-  console.log(data.results[0].gender);
-}); */
+
 function App() {
   return (
-    <div>
+    <UserProvider>
       <Switch>
-        <Route path="/user-detail">
-          <UserDetail />
-        </Route>
-
-        <Route path="/">
-          <Card />
-        </Route>
+        <Route path="/user-detail" component={UserDetail} />
+        <Route path="/" component={Card} />
       </Switch>
-    </div>
+    </UserProvider>
   );
 }
 
