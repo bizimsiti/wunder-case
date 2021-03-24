@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import io from "socket.io-client";
+import Card from "./components/Card";
+import UserDetail from "./components/UserDetail";
+import { Route, Switch } from "react-router-dom";
+/* const socket = io("wss://wunder-provider.herokuapp.com", {
+  transports: ["websocket"]
+});
+socket.on("connect", () => {
+  console.log("connected");
+});
+socket.on("userList", (data) => {
+  console.log(data.results[0].gender);
+}); */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <Route path="/user-detail">
+          <UserDetail />
+        </Route>
+
+        <Route path="/">
+          <Card />
+        </Route>
+      </Switch>
     </div>
   );
 }
